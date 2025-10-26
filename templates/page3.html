@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIBC Online Banking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #b8324b 0%, #a02d46 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: #9c2740;
+            padding: 10px 20px;
+            text-align: right;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .header a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .main-header {
+            background: transparent;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .logo::after {
+            content: "●";
+            color: white;
+            margin-left: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            position: relative;
+        }
+        
+        .login-header {
+            margin-bottom: 30px;
+        }
+        
+        .login-title {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .login-subtitle {
+            font-size: 24px;
+            color: #333;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .register-link {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: #b8324b;
+            text-decoration: underline;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #b8324b;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #b8324b;
+            border-color: #b8324b;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #a02d46;
+            border-color: #a02d46;
+        }
+        
+        .btn-secondary {
+            background: white;
+            border-color: #b8324b;
+            color: #b8324b;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f8f8;
+        }
+        
+        .forgot-password {
+            color: #b8324b;
+            text-decoration: underline;
+            font-size: 14px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .promo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-image {
+            width: 200px;
+            height: 130px;
+            background: linear-gradient(135deg, #b8324b, #d4455c);
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .card-image::before {
+            content: "CIBC";
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .card-image::after {
+            content: "VISA";
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .promo-text {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .learn-more {
+            color: #b8324b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .learn-more:after {
+            content: " >";
+        }
+        
+        .services-bar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .service-item:hover {
+            opacity: 0.8;
+        }
+        
+        .service-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .info-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #ccc;
+            border-radius: 50%;
+            margin-left: 5px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 16px;
+            cursor: help;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .login-card, .promo-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" onclick="return false;">Français</a>
+    </div>
+    
+    <div class="main-header">
+        <div class="logo">CIBC</div>
+    </div>
+    
+    <div class="container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-title">CIBC ONLINE BANKING</div>
+                <h1 class="login-subtitle">Sign on using your CIBC card number</h1>
+                <div class="register-link">
+                    Not registered for Online Banking or Mobile Banking? <a href="#" onclick="return false;">Register now</a>
+                </div>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label class="form-label" for="cardNumber">Card number</label>
+                    <input type="text" id="cardNumber" class="form-input" maxlength="16">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberCard">
+                    <label for="rememberCard">Remember this card number</label>
+                    <span class="info-icon">i</span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password (case sensitive)</label>
+                    <input type="password" id="password" class="form-input">
+                </div>
+                
+                <a href="#" class="forgot-password" onclick="return false;">Reset password</a>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="return false;">Register now</button>
+                    <button type="submit" class="btn btn-primary" onclick="return false;">Sign on</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="promo-card">
+            <div class="card-image">
+                <div style="position: absolute; top: 15px; left: 15px; font-size: 10px;">ADVENTURE CARD</div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30px; height: 20px; background: rgba(255,255,255,0.3); border-radius: 4px;"></div>
+            </div>
+            
+            <div class="promo-text">
+                <strong>Get 4.75%¹ with a CIBC eAdvantage® Savings Account.</strong>
+            </div>
+            
+            <a href="#" class="learn-more" onclick="return false;">Learn more</a>
+        </div>
+    </div>
+    
+    <div class="services-bar">
+        <div class="services-container">
+            <a href="#" class="service-item" onclick="return false;">
+                <div class="service-icon">💰</div>
+                Request financial assistance
+            </a>
+            <a href="#" class="service-item" onclick="return false;">
+                <div class="service-icon">📊</div>
+                Set up direct deposit
+            </a>
+            <a href="#" class="service-item" onclick="return false;">
+                <div class="service-icon">📋</div>
+                Tax slip mailing dates
+            </a>
+            <a href="#" class="service-item" onclick="return false;">
+                <div class="service-icon">🔔</div>
+                New fraud alerts
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="return false;">Explore Products</a></li>
+                    <li><a href="#" onclick="return false;">Branch and ATM Locator</a></li>
+                    <li><a href="#" onclick="return false;">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>I'm Looking For</h3>
+                <ul>
+                    <li><a href="#" onclick="return false;">Special Offers</a></li>
+                    <li><a href="#" onclick="return false;">Site Map</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>About CIBC</h3>
+                <ul>
+                    <li><a href="#" onclick="return false;">Ways to Bank</a></li>
+                    <li><a href="#" onclick="return false;">Our Business</a></li>
+                    <li><a href="#" onclick="return false;">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal Information</h3>
+                <ul>
+                    <li><a href="#" onclick="return false;">Advisories</a></li>
+                    <li><a href="#" onclick="return false;">Electronic Access Agreement</a></li>
+                    <li><a href="#" onclick="return false;">CDIC Deposit Insurance Information</a></li>
+                    <li><a href="#" onclick="return false;">Privacy and Security</a></li>
+                    <li><a href="#" onclick="return false;">Legal</a></li>
+                    <li><a href="#" onclick="return false;">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
