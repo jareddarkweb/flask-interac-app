@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 import os
 
-# Import ngrok
-from pyngrok import ngrok
+# REMOVED: from pyngrok import ngrok # <--- Removed ngrok import
 
 app = Flask(__name__)
 
@@ -42,10 +41,9 @@ def page(page_num):
     return render_template(f'page{page_num}.html', page_num=page_num)
 
 if __name__ == '__main__':
-    # Start ngrok tunnel
-    public_url = ngrok.connect(5000)
-    print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:5000\"")
-
-    # Start Flask app
+    # REMOVED: ngrok code block
+    # public_url = ngrok.connect(5000)
+    # print(f" * ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:5000\"")
+    
+    # Flask app runs with debug mode (reloader enabled)
     app.run(debug=True)
-

